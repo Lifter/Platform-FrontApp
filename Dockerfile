@@ -6,4 +6,6 @@ COPY . .
 RUN npm run build --prod
 
 FROM nginx:alpine
-COPY --from=build /app/dist/FrontApp /usr/share/nginx/html
+COPY --from=build /app/dist/front-app /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
