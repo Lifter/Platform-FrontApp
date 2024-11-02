@@ -18,6 +18,11 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/front-app",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules"
+              ]
+            },
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -30,7 +35,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.sass",
+              "src/styles.scss"
             ],
             "scripts": []
           },
