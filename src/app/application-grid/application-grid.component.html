@@ -1,0 +1,39 @@
+<div class="container">
+    <h2>Applications</h2>
+    
+    <div class="filters mb-3">
+      <select (ngModel)="statusFilter" (ngModelChange)="onFilterChange()">
+        <option value="">All Statuses</option>
+        <option value="Created">Created</option>
+        <option value="Project">Project</option>
+        <option value="Testing">Testing</option>
+        <option value="PreProd">PreProd</option>
+        <option value="Prod">Prod</option>
+      </select>
+      <input (ngModel)="authorFilter" (ngModelChange)="onFilterChange()" placeholder="Filter by author">
+    </div>
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th (click)="onSort('name')">Name</th>
+          <th (click)="onSort('status')">Status</th>
+          <th (click)="onSort('author')">Author</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let app of applications">
+          <td>{{ app.name }}</td>
+          <td>{{ app.status }}</td>
+          <td>{{ app.author }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <ngb-pagination
+      [(page)]="page"
+      [pageSize]="pageSize"
+      [collectionSize]="total"
+      (pageChange)="onPageChange($event)"
+    ></ngb-pagination>
+  </div>
